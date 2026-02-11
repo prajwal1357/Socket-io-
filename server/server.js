@@ -6,6 +6,8 @@ const http = require("http");
 const authRoutes = require("./routes/auth.routes");
 const { Server } = require("socket.io");
 const socketHandler = require("./socket/socket");
+const userRoutes = require("./routes/user.routes");
+const messageRoutes = require("./routes/message.routes");
 
 
 dotenv.config();
@@ -17,6 +19,10 @@ const server = http.createServer(app);
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/messages", messageRoutes);
+
+
 
 // Test route
 app.get("/", (req, res) => {
